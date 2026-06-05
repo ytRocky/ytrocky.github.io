@@ -1,5 +1,173 @@
+
 <!DOCTYPE html>
-<html>
-<head><title>我的官方網站</title></head>
-<body><h1>網站建設中，敬請期待！</h1></body>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>烟台程沁</title>
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+        }
+
+        body {
+            background-color: #f8fafc;
+            color: #1e293b; 
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; 
+        }
+
+        header {
+            background-color: #ffffff;
+            border-bottom: 1px solid #e2e8f0;
+            width: 100%;
+        }
+
+        .navbar {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.5rem 2rem;
+        }
+
+        .brand {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #0f172a;
+            text-decoration: none;
+            letter-spacing: 0.5px;
+        }
+
+        .brand span {
+            color: #3b82f6;
+        }
+
+
+        .container {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .hero-banner {
+            text-align: center;
+        }
+
+        .hero-banner h2 {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #0f172a;
+            line-height: 1.5;
+            margin-bottom: 1.2rem;
+            letter-spacing: 1px;
+        }
+
+
+        .dynamic-text {
+            color: #3b82f6;
+            font-weight: 900;
+            display: inline-block;
+        }
+
+        .cursor {
+            color: #3b82f6;
+            margin-left: 2px;
+            animation: blink 0.75s step-end infinite;
+        }
+
+
+        @keyframes blink {
+            from, to { color: transparent }
+            50% { color: #3b82f6; }
+        }
+
+        .hero-banner p {
+            font-size: 1.1rem;
+            color: #64748b;
+        }
+
+
+        footer {
+            background-color: #ffffff;
+            border-top: 1px solid #e2e8f0;
+            padding: 1.5rem;
+            text-align: center;
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+
+
+        @media (max-width: 768px) {
+            .hero-banner h2 { font-size: 2.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+
+    <header>
+        <div class="navbar">
+            <a href="index.html" class="brand">烟台<span>程沁科技</span></a>
+        </div>
+    </header>
+
+
+    <main class="container">
+        <section class="hero-banner">
+            <h2>网站建筑中<br><span class="dynamic-text" id="type-target"></span><span class="cursor">|</span></h2>
+            <p>烟台程沁智能科技，致力于为您带来更美好的体验。</p>
+        </section>
+    </main>
+
+
+    <footer>
+        <p>&copy; 2026 ChengQin.YT Technology</p>
+    </footer>
+
+
+    <script>
+        const text = "敬請期待...";
+        let index = 0;
+        let isDeleting = false;
+        const target = document.getElementById("type-target");
+
+        function playLog() {
+            if (!isDeleting) {
+
+                target.textContent = text.substring(0, index + 1);
+                index++;
+                
+
+                if (index === text.length) {
+                    isDeleting = true;
+                    setTimeout(playLog, 2500);
+                    return;
+                }
+            } else {
+
+                target.textContent = text.substring(0, index - 1);
+                index--;
+
+
+                if (index === 0) {
+                    isDeleting = false;
+                    setTimeout(playLog, 500);
+                    return;
+                }
+            }
+            let speed = isDeleting ? 60 : 180;
+            setTimeout(playLog, speed);
+        }
+        document.addEventListener("DOMContentLoaded", () => {
+            setTimeout(playLog, 500);
+        });
+    </script>
+
+</body>
 </html>
